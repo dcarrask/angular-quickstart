@@ -49,7 +49,10 @@ var AppComponent = (function () {
     //   // heroService
     // }
     AppComponent.prototype.ngOnInit = function () {
-        this.heroes = this.heroService.getHeroes();
+        // this.heroes = this.heroService.getHeroes();
+        // this.heroService.getHeroes().then(heroes => this.heroes = heroes);
+        var _this = this;
+        this.heroService.getHeroesSlowly().then(function (heroes) { return _this.heroes = heroes; });
         // this.getHeroes();
     };
     AppComponent = __decorate([
