@@ -3,6 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { Hero } from './hero';
 import { HeroService } from './hero.service';
 
+import { Product } from './products/product';
+import { ProductService } from './products/products.service';
+
 import { Router } from '@angular/router';
 
 @Component({
@@ -15,15 +18,20 @@ import { Router } from '@angular/router';
 export class DashboardComponent implements OnInit{
 
   heroes: Hero[] = [];
+  products: Product[] = [];
 
   constructor(
     private router: Router,
-    private heroService: HeroService
+    private heroService: HeroService,
+    private productService: ProductService
   ){}
 
   ngOnInit(): void {
     this.heroService.getHeroes()
       .then(heroes => this.heroes = heroes.slice(1,5));
+
+    this.productService.getProducts()
+      .then(products => this.products = products.slice(1,5));
       // .then(heroes => this.heroes = heroes);
   }
 

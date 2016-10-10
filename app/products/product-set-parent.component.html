@@ -1,0 +1,15 @@
+<h1>PRODUCT SET PARENT COMPONENT</h1>
+
+
+<input type="text">
+
+<hr>
+
+<ul class="products">
+  <li *ngFor="let product of products"
+    [class.selected]="product === selectedProduct"
+    (click)="onSelect(product)">
+    <span class="badge">{{product.id}}</span> {{product.name}}
+    <button class="delete" (click)="delete(product); $event.stopPropagation()">x</button>
+  </li>
+</ul>

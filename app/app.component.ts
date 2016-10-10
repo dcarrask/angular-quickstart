@@ -2,16 +2,18 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'my-app',
-  template: `<h1>{{title}}</h1>
-             <nav>
-               <a routerLink="/dashboard">Dashboard</a>
-               <a routerLink="/heroes">Heroes</a>
-             </nav>
-             <router-outlet></router-outlet>`,
+  // template: `<h1>{{title}}</h1>
+  //            <nav>
+  //              <a routerLink="/dashboard">Dashboard</a>
+  //              <a routerLink="/heroes">Heroes</a>
+  //              <a routerLink="/products">Products</a>
+  //            </nav>
+  //            <router-outlet></router-outlet>`,
              // <a routerLink="/heroes">Heroes</a>
              // <br>
              // <my-heroes></my-heroes>
-  // templateUrl
+  // templateUrl: 'app.component.html',
+  templateUrl: './app/app.component.html',
   styleUrls: ['app/app.component.css'],
 })
 
