@@ -12,15 +12,15 @@ var core_1 = require('@angular/core');
 var products_mock_1 = require('./products.mock');
 var http_1 = require('@angular/http');
 require('rxjs/add/operator/toPromise');
-var ProductService = (function () {
-    function ProductService(http) {
+var ProductsService = (function () {
+    function ProductsService(http) {
         this.http = http;
         // private productsUrl = 'app/products';
         // private productsUrl = 'app/products/products';
         this.productsUrl = 'products';
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
     }
-    ProductService.prototype.getProducts = function () {
+    ProductsService.prototype.getProducts = function () {
         // return this.http.get(this.productsUrl)
         //            .toPromise()
         //            .then(response => response.json().data as Product[])
@@ -31,18 +31,18 @@ var ProductService = (function () {
         //            .catch(this.handleError)
         return Promise.resolve(products_mock_1.PRODUCTS);
     };
-    ProductService.prototype.getProductsSlowly = function () {
+    ProductsService.prototype.getProductsSlowly = function () {
         var _this = this;
         return new Promise(function (resolve) {
             return setTimeout(resolve, 5000);
         }) // delay 2 seconds
             .then(function () { return _this.getProducts(); });
     };
-    ProductService.prototype.getProduct = function (id) {
+    ProductsService.prototype.getProduct = function (id) {
         return this.getProducts()
             .then(function (products) { return products.find(function (product) { return product.id === id; }); });
     };
-    ProductService.prototype.update = function (product) {
+    ProductsService.prototype.update = function (product) {
         var url = this.productsUrl + "/" + product.id;
         return this.http
             .put(url, JSON.stringify(product), { headers: this.headers })
@@ -50,30 +50,37 @@ var ProductService = (function () {
             .then(function () { return product; })
             .catch(this.handleError);
     };
-    ProductService.prototype.create = function (name) {
+    ProductsService.prototype.create = function (name) {
         return this.http
             .post(this.productsUrl, JSON.stringify({ name: name }), { headers: this.headers })
             .toPromise()
             .then(function (res) { return res.json().data; })
             .catch(this.handleError);
     };
-    ProductService.prototype.delete = function (id) {
+    ProductsService.prototype.delete = function (id) {
         var url = this.productsUrl + "/" + id;
         return this.http.delete(url, { headers: this.headers })
             .toPromise()
             .then(function () { return null; })
             .catch(this.handleError);
     };
-    ProductService.prototype.handleError = function (error) {
+    ProductsService.prototype.getProductsFiltered = function () {
+        return this.http.get(this.productsUrl)
+            .toPromise()
+            .then(function (response) { return response.json().data; })
+            .catch(this.handleError);
+        // return Promise.resolve(HEROES);
+    };
+    ProductsService.prototype.handleError = function (error) {
         debugger;
         console.error('An error occurred', error);
         return Promise.reject(error.message || error);
     };
-    ProductService = __decorate([
+    ProductsService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])
-    ], ProductService);
-    return ProductService;
+    ], ProductsService);
+    return ProductsService;
 }());
-exports.ProductService = ProductService;
+exports.ProductsService = ProductsService;
 //# sourceMappingURL=products.service.js.map

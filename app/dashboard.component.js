@@ -39,7 +39,7 @@ var DashboardComponent = (function () {
             templateUrl: 'dashboard.component.html',
             styleUrls: ['dashboard.component.css']
         }), 
-        __metadata('design:paramtypes', [router_1.Router, hero_service_1.HeroService, products_service_1.ProductService])
+        __metadata('design:paramtypes', [router_1.Router, hero_service_1.HeroService, products_service_1.ProductsService])
     ], DashboardComponent);
     return DashboardComponent;
 }());

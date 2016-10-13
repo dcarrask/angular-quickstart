@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Router } from '@angular/router';
 import { Product } from './product';
-import { ProductService } from './products.service';
+import { ProductsService } from './products.service';
 
 @Component({
   moduleId: module.id,
@@ -19,7 +19,7 @@ export class ProductsComponent implements OnInit{
 
   constructor(
     private router: Router,
-    private productService: ProductService){}
+    private productService: ProductsService){}
 
   getProducts(): void {
     this.productService.getProducts().then(products => this.products = products);

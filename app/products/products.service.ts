@@ -8,7 +8,7 @@ import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
-export class ProductService{
+export class ProductsService{
 
   // private productsUrl = 'app/products';
   // private productsUrl = 'app/products/products';
@@ -63,6 +63,14 @@ export class ProductService{
       .toPromise()
       .then(() => null)
       .catch(this.handleError)
+  }
+
+  getProductsFiltered(): Promise<Product[]> {
+    return this.http.get(this.productsUrl)
+               .toPromise()
+               .then(response => response.json().data as Product[])
+               .catch(this.handleError)
+    // return Promise.resolve(HEROES);
   }
 
   private handleError(error: any): Promise<any> {

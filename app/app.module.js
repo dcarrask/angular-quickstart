@@ -22,6 +22,9 @@ var products_component_1 = require('./products/products.component');
 var product_set_parent_component_1 = require('./products/product-set-parent.component');
 var products_service_1 = require('./products/products.service');
 var dashboard_component_1 = require('./dashboard.component');
+var wiki_component_1 = require('./wiki/wiki.component');
+var wiki_smart_component_1 = require('./wiki/wiki-smart.component');
+// import { WikipediaService }          from './wiki/wikipedia.service';
 var app_routing_1 = require('./app.routing');
 var AppModule = (function () {
     function AppModule() {
@@ -32,6 +35,7 @@ var AppModule = (function () {
                 platform_browser_1.BrowserModule,
                 forms_1.FormsModule,
                 http_1.HttpModule,
+                http_1.JsonpModule,
                 angular_in_memory_web_api_1.InMemoryWebApiModule.forRoot(in_memory_data_service_1.InMemoryDataService),
                 app_routing_1.routing
             ],
@@ -41,11 +45,13 @@ var AppModule = (function () {
                 heroes_component_1.HeroesComponent,
                 products_component_1.ProductsComponent,
                 product_set_parent_component_1.ProductSetParentComponent,
-                dashboard_component_1.DashboardComponent
+                dashboard_component_1.DashboardComponent,
+                wiki_component_1.WikiComponent,
+                wiki_smart_component_1.WikiSmartComponent
             ],
             providers: [
                 hero_service_1.HeroService,
-                products_service_1.ProductService
+                products_service_1.ProductsService
             ],
             bootstrap: [app_component_1.AppComponent]
         }), 

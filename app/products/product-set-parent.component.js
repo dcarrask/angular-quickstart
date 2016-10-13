@@ -9,21 +9,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var router_1 = require('@angular/router');
-var common_1 = require('@angular/common');
 var products_service_1 = require('./products.service');
+var http_1 = require('@angular/http');
 var ProductSetParentComponent = (function () {
-    function ProductSetParentComponent(productService, route, location) {
-        this.productService = productService;
-        this.route = route;
-        this.location = location;
+    function ProductSetParentComponent(http, productsService) {
+        this.http = http;
+        this.productsService = productsService;
     }
-    ProductSetParentComponent.prototype.getProducts = function () {
-        var _this = this;
-        this.productService.getProducts().then(function (products) { return _this.products = products; });
-    };
     ProductSetParentComponent.prototype.ngOnInit = function () {
         this.getProducts();
+    };
+    ProductSetParentComponent.prototype.getProducts = function () {
+        var _this = this;
+        this.productsService.getProducts().then(function (products) { return _this.products = products; });
+    };
+    ProductSetParentComponent.prototype.valuechange = function (newValue) {
+        this.mymodel = newValue;
+        console.log(newValue);
+        // this.productsService.getProductsFiltered().then(products => this.filtered = products);
+        // console.log("filtered: " + this.filtered);
+        // this.heroService.getHeroes().then(heroes => this.heroes = heroes);
     };
     ProductSetParentComponent = __decorate([
         core_1.Component({
@@ -31,7 +36,7 @@ var ProductSetParentComponent = (function () {
             selector: 'product-set-parent',
             templateUrl: 'product-set-parent.component.html',
         }), 
-        __metadata('design:paramtypes', [products_service_1.ProductService, router_1.ActivatedRoute, common_1.Location])
+        __metadata('design:paramtypes', [http_1.Http, products_service_1.ProductsService])
     ], ProductSetParentComponent);
     return ProductSetParentComponent;
 }());

@@ -59,7 +59,7 @@ var ProductsComponent = (function () {
             templateUrl: 'products.component.html',
             styleUrls: ['products.component.css']
         }), 
-        __metadata('design:paramtypes', [router_1.Router, products_service_1.ProductService])
+        __metadata('design:paramtypes', [router_1.Router, products_service_1.ProductsService])
     ], ProductsComponent);
     return ProductsComponent;
 }());

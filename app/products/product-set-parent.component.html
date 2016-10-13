@@ -1,7 +1,15 @@
 <h1>PRODUCT SET PARENT COMPONENT</h1>
 
+<!-- <my-wiki-smart></my-wiki-smart> -->
 
-<input type="text">
+<input type="text"
+       [ngModel]="mymodel"
+       (keypress)="mymodel=$event.target.value"/>
+
+#{{mymodel}}#
+
+<input type="text" [ngModel]="mymodel" (ngModelChange)="valuechange($event)" />
+
 
 <hr>
 

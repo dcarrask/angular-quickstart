@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { ProductService } from './products.service';
+import { ProductsService } from './products.service';
 
 import { Product } from './product';
+
+import { Headers, Http } from '@angular/http';
 
 @Component({
   moduleId: module.id,
@@ -17,26 +19,40 @@ export class ProductSetParentComponent implements OnInit {
 
   product: Product;
   products: Product[];
+  filtered: Product[];
+  mymodel: String;
 
   constructor(
-    private productService: ProductService,
-    private route: ActivatedRoute,
-    private location: Location
+    private http: Http,
+    private productsService: ProductsService
   ){}
-
-  getProducts(): void {
-    this.productService.getProducts().then(products => this.products = products);
-  }
 
   ngOnInit(): void {
     this.getProducts();
   }
 
+  getProducts(): void {
+    this.productsService.getProducts().then(products => this.products = products);
+  }
+
+  valuechange(newValue): void {
+    this.mymodel = newValue;
+    console.log(newValue);
+    // this.productsService.getProductsFiltered().then(products => this.filtered = products);
+    // console.log("filtered: " + this.filtered);
+    // this.heroService.getHeroes().then(heroes => this.heroes = heroes);
+  }
+  // getHeroes(): void {
+  // }
+
+
+
+
   // ngOnInit(): void{
   //   this.route.params.forEach((params: Params) => {
   //     let id = +params['id']
-  //     this.heroService.getHero(id)
-  //       .then(hero => this.hero = hero);
+  //     this.productService.getProduct(id)
+  //       .then(product => this.product = product);
   //   });
   // }
 
@@ -45,7 +61,7 @@ export class ProductSetParentComponent implements OnInit {
   // }
 
   // save(): void {
-  //   this.heroService.update(this.hero)
+  //   this.productService.update(this.product)
   //     .then(() => this.goBack());
   // }
 

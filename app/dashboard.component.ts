@@ -4,7 +4,7 @@ import { Hero } from './hero';
 import { HeroService } from './hero.service';
 
 import { Product } from './products/product';
-import { ProductService } from './products/products.service';
+import { ProductsService } from './products/products.service';
 
 import { Router } from '@angular/router';
 
@@ -23,7 +23,7 @@ export class DashboardComponent implements OnInit{
   constructor(
     private router: Router,
     private heroService: HeroService,
-    private productService: ProductService
+    private productService: ProductsService
   ){}
 
   ngOnInit(): void {

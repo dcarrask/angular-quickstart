@@ -1,7 +1,7 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
-import { HttpModule }    from '@angular/http';
+import { HttpModule, JsonpModule }    from '@angular/http';
 import { RouterModule }  from '@angular/router';
 
 
@@ -13,11 +13,15 @@ import { HeroDetailComponent } from './hero-detail.component';
 import { HeroesComponent }     from './heroes.component';
 import { HeroService }         from './hero.service';
 
-import { ProductsComponent }   from './products/products.component';
+import { ProductsComponent }         from './products/products.component';
 import { ProductSetParentComponent } from './products/product-set-parent.component';
-import { ProductService }      from './products/products.service';
+import { ProductsService }           from './products/products.service';
 
-import { DashboardComponent }  from './dashboard.component';
+import { DashboardComponent }        from './dashboard.component';
+
+import { WikiComponent }             from './wiki/wiki.component';
+import { WikiSmartComponent }        from './wiki/wiki-smart.component';
+// import { WikipediaService }          from './wiki/wikipedia.service';
 
 import { routing } from './app.routing';
 
@@ -26,6 +30,7 @@ import { routing } from './app.routing';
               BrowserModule,
               FormsModule,
               HttpModule,
+              JsonpModule,
               InMemoryWebApiModule.forRoot(InMemoryDataService),
               routing
            ],
@@ -35,11 +40,13 @@ import { routing } from './app.routing';
                   HeroesComponent,
                   ProductsComponent,
                   ProductSetParentComponent,
-                  DashboardComponent
+                  DashboardComponent,
+                  WikiComponent,
+                  WikiSmartComponent
                 ],
   providers: [
                 HeroService,
-                ProductService
+                ProductsService
              ],
   bootstrap: [ AppComponent ]
 })
