@@ -15,6 +15,7 @@ var WikipediaService = (function () {
         this.jsonp = jsonp;
     }
     WikipediaService.prototype.search = function (term) {
+        // http://en.wikipedia.org/w/api.php?search=te&action=opensearch&format=json&callback=JSONP_CALLBACK
         var wikiUrl = 'http://en.wikipedia.org/w/api.php';
         var params = new http_1.URLSearchParams();
         params.set('search', term); // the user's search value
