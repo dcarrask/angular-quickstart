@@ -20,13 +20,15 @@ export class WikipediaService {
     // TODO: Add error handling
     return this.jsonp
                .get(wikiUrl, { search: params })
-               .toPromise()
+               .map((request) => request.json()[1]);
+
+               // .toPromise()
                // .then((response) => response.json()[1]);
-               .then(function (response){
-                 // (response) => response.json()[1]
-                 // return response.json()[1]
-                 return response.json()[1]
-               });
+               // .then(function (response){
+               //   // (response) => response.json()[1]
+               //   // return response.json()[1]
+               //   return response.json()[1]
+               // });
                  // debugger
                //}
                // );

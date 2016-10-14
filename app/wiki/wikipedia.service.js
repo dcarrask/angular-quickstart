@@ -25,12 +25,14 @@ var WikipediaService = (function () {
         // TODO: Add error handling
         return this.jsonp
             .get(wikiUrl, { search: params })
-            .toPromise()
-            .then(function (response) {
-            // (response) => response.json()[1]
-            // return response.json()[1]
-            return response.json()[1];
-        });
+            .map(function (request) { return request.json()[1]; });
+        // .toPromise()
+        // .then((response) => response.json()[1]);
+        // .then(function (response){
+        //   // (response) => response.json()[1]
+        //   // return response.json()[1]
+        //   return response.json()[1]
+        // });
         // debugger
         //}
         // );
